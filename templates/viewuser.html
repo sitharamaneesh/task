@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{%load static%}
+{%for i in user%}
+
+<div class="navbar"><h3>Welcome {{i.username}}</h3>
+<a href="{%url 'home'%}">Home</a>
+<a href="{%url 'userview'%}">User Details</a>
+<a href="{%url 'logoutuser'%}">LogOut</a>
+</div>
+<div class="tablediv">
+    <table class="table">
+    <tr >
+        <th>Email</th>
+        <th>Address</th>
+        <th>Password</th>
+    </tr>
+    <tr >
+        <th>{{i.email}}</th>
+        <th>{{i.address}}</th>
+            <th>{{i.password}}</th>
+    </tr>
+    {%endfor%}
+</table>
+</div>
+
+{%endblock%}

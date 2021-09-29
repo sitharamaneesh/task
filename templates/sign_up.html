@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block content%}
+{%load static%}
+<div  class="navbar">
+    <h3>Sign Up</h3>
+    <a href="{%url 'home'%}">Home</a>
+    <a href="{%url 'userview'%}">User Details</a>
+</div>
+<form action="validation" method="POST">
+    {%csrf_token%}
+<div class="form-group">
+    {{form.as_p}}
+<input type="submit" class="submit " value="signin">
+</div>
+</form>
+<div class="errormsg">{{errormsg}}<br>
+</div>
+
+
+{%endblock%}

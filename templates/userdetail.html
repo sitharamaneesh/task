@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{%block content%}
+{%load static%}
+<div class="navbar">
+    <h3>User Details</h3>
+    <a href="{%url 'home'%}">Home</a>  
+</div>
+<form action ="alter" method="POST">
+    {%csrf_token%}  
+    <div class="form-group"   style="padding-top:50px;"> 
+        <div class="tablediv">
+        <table class="table">
+            {%for i in user%}
+            <tr for={{i.id}}>
+                <th><input  type="hidden" required name="name" value="{{i.username}}">{{i.username}}</th>
+                <th><input for={{i.id}} type="hidden" name="email" required value="{{i.email}}">{{i.email}}</th>
+                <th><input for={{i.id}} type="hidden"  required name="address" value="{{i.address}}">{{i.address}}</th>
+                <!--<th name='column' value={{i.id}}><input type="submit" name='action'value="Edit"></th>
+                <th name='column' value={{i.id}}><input name='action' type="submit" value="Delete"></th>
+                -->
+                  <th><button class="submit" name='action' id={{i.id}} value=Edit{{i.id}}>Edit</button></th>
+                <th><button name='action' class="dlt" id={{i.id}} value=Delete{{i.id}}>Delete</button></th>
+            </tr>
+            {%endfor%}
+        </table>
+            </div>  
+            </div>
+</form>
+
+{%endblock%}
